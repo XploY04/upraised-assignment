@@ -4,8 +4,9 @@
   "description": "IMF Gadget Management API - Secure API for managing impossible mission gadgets",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/app.js",
+    "build": "npm run db:generate && tsc",
+    "build:production": "npm install && npm run build",
+    "start": "node ./dist/app.js",
     "dev": "nodemon src/app.ts",
     "dev:db": "prisma dev",
     "db:generate": "prisma generate",

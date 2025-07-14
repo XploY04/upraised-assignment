@@ -26,10 +26,12 @@ RATE_LIMIT_MAX_REQUESTS=100
 For Render deployment:
 
 1. Connect your GitHub repository
-2. Set the build command: `npm install && npm run build && npm run db:migrate`
+2. Set the build command: `npm run build:production`
 3. Set the start command: `npm start`
 4. Add a PostgreSQL database service
 5. Set environment variables
+
+**Alternative build command if needed**: `npm install && npm run db:generate && npm run build && npm run db:migrate`
 
 ## Heroku
 
