@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      String   @default("agent") // agent, admin
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Gadget {
+  id                        String       @id @default(uuid())
+  name                      String
+  codename                  String       @unique
+  status                    GadgetStatus @default(Available)
+  description               String?
+  createdAt                 DateTime     @default(now())
+  updatedAt                 DateTime     @updatedAt
+  decommissionedAt          DateTime?
+  selfDestructAt            DateTime?
+  selfDestructCode          String?
+  missionSuccessProbability Int?
+
+  @@map("gadgets")
+}
+
+enum GadgetStatus {
+  Available
+  Deployed
+  Destroyed
+  Decommissioned
+}
