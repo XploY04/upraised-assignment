@@ -46,7 +46,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       data: {
         email,
         password: hashedPassword,
-        role: ["agent", "admin"].includes(role) ? role : "agent",
+        role: "agent",
       },
       select: {
         id: true,

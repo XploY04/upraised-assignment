@@ -275,7 +275,6 @@ export const selfDestructGadget = async (
 ): Promise<void> => {
   try {
     const { id } = req.params;
-    const { confirmationCode } = req.body;
 
     // Check if gadget exists
     const existingGadget = await prisma.gadget.findUnique({
@@ -302,6 +301,8 @@ export const selfDestructGadget = async (
     }
 
     // Generate confirmation code if not provided
+    const confirmationCode = req.body?.confirmationCode;
+
     if (!confirmationCode) {
       const selfDestructCode = GadgetService.generateSelfDestructCode();
 
