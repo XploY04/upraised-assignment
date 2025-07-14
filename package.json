@@ -5,8 +5,10 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "npm run db:generate && tsc",
+    "build:safe": "npm run db:generate || echo 'Prisma generation failed but continuing...' && tsc",
     "build:production": "npm install && npm run build",
-    "start": "node ./dist/app.js",
+    "start": "node start.js",
+    "start:local": "node dist/app.js",
     "dev": "nodemon src/app.ts",
     "dev:db": "prisma dev",
     "db:generate": "prisma generate",

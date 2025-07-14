@@ -31,7 +31,11 @@ For Render deployment:
 4. Add a PostgreSQL database service
 5. Set environment variables
 
+**Note**: The project includes a `start.js` script that handles path resolution for deployment environments.
+
 **Alternative build command if needed**: `npm install && npm run db:generate && npm run build && npm run db:migrate`
+
+**Troubleshooting**: If you encounter Prisma generation issues on Windows during local development, you can use `npm run build:safe` or run `tsc` directly after the Prisma client has been generated once.
 
 ## Heroku
 
